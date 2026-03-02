@@ -1,6 +1,8 @@
 package com.example.zegarszachowy;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    Gracz gracz1, gracz2;
+    Button button1, button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +25,30 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        button1 = findViewById(R.id.button);
+        gracz1 = new Gracz(button1, true);
+        button2 = findViewById(R.id.button2);
+        gracz2 = new Gracz(button2, false);
+        button1.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        gracz1.odwwrocAktywnosc();
+                        gracz2.odwwrocAktywnosc();
+                    }
+                }
+        );
+
+        button2.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        gracz1.odwwrocAktywnosc();
+                        gracz2.odwwrocAktywnosc();
+                    }
+                }
+        );
+
     }
 }
